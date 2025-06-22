@@ -1,7 +1,10 @@
 package asd;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Graphics;
 import java.awt.MenuBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -13,7 +16,7 @@ import javax.swing.JTextArea;
 
 
 
-public class Window {
+public class Window implements ActionListener {
 	
 	JFrame window;
 	JTextArea textfield;
@@ -21,7 +24,9 @@ public class Window {
 	JMenuBar Menu;
 	JMenu menuFile, menuEdit, menuFormat;
 	JMenuItem Inew, Iopen, Isave, Isearch, Ifontsize, Ifontcolor, Ibgcolor, IWpaper; 
-	public String Wallpaper = "D:\\Java\\new project\samurai.jpg";
+	
+	Functions func = new Functions(this);
+	
 	
 	public static void main(String[] args)
 	{
@@ -38,6 +43,9 @@ public class Window {
 		CreateFormatMenu();
 		window.setVisible(true);
 	}
+	
+	
+	
 	
 	public void CreateWindow()
 	{
@@ -77,6 +85,8 @@ public class Window {
 	public void CreateFileMenu()
 	{
 		Inew = new JMenuItem("New");
+		Inew.addActionListener(this);
+		Inew.setActionCommand("New");
 		menuFile.add(Inew);
 		
 		Iopen = new JMenuItem("Open");
@@ -105,9 +115,25 @@ public class Window {
 	{
 		Ibgcolor = new JMenuItem("Background Color");
 		menuFormat.add(Ibgcolor);
+		Ibgcolor.addActionListener(this);
+		Ibgcolor.setActionCommand("BgColor");
 		
 		IWpaper = new JMenuItem("Change Wallpaper");
+		
 		menuFormat.add(IWpaper);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		String command = e.getActionCommand();
+		switch(command)
+		{
+		case "New": func.NewFunctionItem(); break;
+		
+		case "BgColor": func.BgColor(); break;
+		}
 	}
 	
 	
