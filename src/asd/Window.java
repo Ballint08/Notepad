@@ -25,7 +25,7 @@ public class Window implements ActionListener {
 	JMenu menuFile, menuEdit, menuFormat;
 	JMenuItem Inew, Iopen, Isave, Isearch, Ifontsize, Ifontcolor, Ibgcolor, IWpaper; 
 	
-	Functions func = new Functions(this);
+	File_Functions func = new File_Functions(this);
 	
 	
 	public static void main(String[] args)
@@ -99,7 +99,6 @@ public class Window implements ActionListener {
 		menuFile.add(Isearch);
 		
 		
-		//Iopen, Isave, Isearch, Ifontsize, Ifontcolor, Ibgcolor, IWpaper
 	}
 	
 	public void CreateEditMenu()
@@ -132,7 +131,6 @@ public class Window implements ActionListener {
 		{
 		case "New": func.NewFunctionItem(); break;
 		
-		case "BgColor": func.BgColor(); break;
 		}
 	}
 	
